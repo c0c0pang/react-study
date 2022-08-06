@@ -11,18 +11,6 @@ export const MediaDiv = styled.div`
   }
 `;
 
-export const Header = styled.div`
-  width: 768px;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-family: "Black Han Sans", sans-serif;
-  position: absolute;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-`;
-
 export const HeaderDiv = styled.div`
   width: 768px;
   height: auto;
@@ -154,14 +142,6 @@ export const PagenumberDiv = styled.div`
   align-items: center;
   border: 1px solid #f39926;
   border-radius: 5px;
-`;
-
-export const Footer = styled.div`
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const FooterDiv = styled.div`
