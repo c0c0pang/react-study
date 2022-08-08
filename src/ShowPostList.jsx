@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useCallback } from "react";
 import {
   PostSection,
   PostTitleDiv,
@@ -7,6 +8,7 @@ import {
   PagenumberDiv,
   LoadingDiv,
   LoadingImg,
+  CursorDiv,
 } from "./styledComponent";
 import {
   faArrowsRotate,
@@ -17,14 +19,46 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import loadingIcon from "./loading.svg";
 import EachPost from "./EachPost";
-function ShowPostList(isPost, loading, addPost, postList) {
+import { useNavigate } from "react-router-dom";
+
+const initialPostList = [
+  { id: 1, title: "시사N, 대학기자상 취재" },
+  { id: 2, title: "학보, 시사N, 대학기자상 취재" },
+  { id: 3, title: "학보, 시사N, 대학기자상 취재" },
+];
+
+function ShowPostList() {
+  const [loading, setLoading] = useState(true);
+  const [isPost, setisPost] = useState(false);
+  const [postList, setPostList] = useState([]);
+
+  const addPost = useCallback(() => {
+    setPostList((postList) => [
+      ...postList,
+      { id: 4, title: "학보, 시사N, 대학기자상 취재" },
+    ]);
+  }, [postList]);
+
+  const navigate = useNavigate();
+  const goWrite = () => {
+    navigate("/write");
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      setPostList(initialPostList);
+      setLoading(false);
+    }, 600);
+  }, []);
+
   return (
     <>
       <PostSection>
         <PostTitleDiv>
           <FontAwesomeIcon onClick={addPost} icon={faArrowsRotate} />
           <PostTitle>익명게시판</PostTitle>
-          <FontAwesomeIcon icon={faPenToSquare} />
+          <CursorDiv>
+            <FontAwesomeIcon onClick={goWrite} icon={faPenToSquare} />
+          </CursorDiv>
         </PostTitleDiv>
         <PostListDiv>
           {loading ? (
@@ -39,7 +73,7 @@ function ShowPostList(isPost, loading, addPost, postList) {
                 <EachPost
                   key={element.id}
                   title={element.title}
-                  replCount={element.replCount}
+                  postID={element.id}
                 />
               ))}
             </ul>

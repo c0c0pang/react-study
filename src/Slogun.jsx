@@ -1,5 +1,5 @@
 import { SlogunSection, SlogunBig, SlogunSmall } from "./styledComponent";
-
+import React from "react";
 function Slogun() {
   return (
     <SlogunSection>
@@ -8,4 +8,4 @@ function Slogun() {
     </SlogunSection>
   );
 }
-export default Slogun;
+export default React.memo(Slogun);

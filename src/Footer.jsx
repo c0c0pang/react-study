@@ -1,7 +1,7 @@
 import { FooterDiv, FooterBig, FooterSmall } from "./styledComponent";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import React from "react";
 function Footer() {
   return (
     <FooterDiv>
@@ -11,4 +11,4 @@ function Footer() {
     </FooterDiv>
   );
 }
-export default Footer;
+export default React.memo(Footer);
